@@ -26,6 +26,7 @@ class Rechnung
     #[ORM\JoinColumn(nullable: false)]
     private ?Kunden $kunde = null;
 
+
     #[ORM\OneToMany(mappedBy: 'rechnung', targetEntity: Rechnungspositionen::class)]
     private Collection $Rechnungsposition;
 
