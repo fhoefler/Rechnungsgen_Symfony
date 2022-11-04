@@ -48,6 +48,10 @@ class Kunden
     #[ORM\OneToMany(mappedBy: 'kunde', targetEntity: Rechnung::class)]
     private Collection $rechnung;
 
+    #[ORM\ManyToOne(inversedBy: 'kunden')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Firma $firma = null;
+
     public function __construct()
     {
         $this->rechnung = new ArrayCollection();
@@ -204,6 +208,18 @@ class Kunden
                 $rechnung->setKunde(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFirma(): ?Firma
+    {
+        return $this->firma;
+    }
+
+    public function setFirma(?Firma $firma): self
+    {
+        $this->firma = $firma;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FirmaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FirmaRepository::class)]
@@ -39,6 +41,14 @@ class Firma
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fn = null;
+
+    #[ORM\OneToMany(mappedBy: 'firma', targetEntity: Kunden::class)]
+    private Collection $kunden;
+
+    public function __construct()
+    {
+        $this->kunden = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +159,36 @@ class Firma
     public function setFn(?string $fn): self
     {
         $this->fn = $fn;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Kunden>
+     */
+    public function getKunden(): Collection
+    {
+        return $this->kunden;
+    }
+
+    public function addKunden(Kunden $kunden): self
+    {
+        if (!$this->kunden->contains($kunden)) {
+            $this->kunden->add($kunden);
+            $kunden->setFirma($this);
+        }
+
+        return $this;
+    }
+
+    public function removeKunden(Kunden $kunden): self
+    {
+        if ($this->kunden->removeElement($kunden)) {
+            // set the owning side to null (unless already changed)
+            if ($kunden->getFirma() === $this) {
+                $kunden->setFirma(null);
+            }
+        }
 
         return $this;
     }
