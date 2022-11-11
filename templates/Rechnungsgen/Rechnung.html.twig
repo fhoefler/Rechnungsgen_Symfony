@@ -2,77 +2,112 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
-        <div class="col-md-12">
-            <div class="contact-block mb-4 mb-lg-0">
-                <h5>Kunde auswählen <a class='fas fa-pen' style='font-size:18px' href="CreateCustomer.html"></a> <a
-                            class='fas fa-trash-alt' style='font-size:18px'></a></h5>
+            <div class="col-md-12">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <h5>Kunde auswählen <a class='fas fa-pen' style='font-size:18px' href="CreateCustomer.html"></a> <a
+                                class='fas fa-trash-alt' style='font-size:18px'></a></h5>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <b>Rechnungsnummer:</b>
+                <input type="text" name="Rechnungsnummer" value="">
+            </div>
+            <div class="col-md-6 text-center">
+                <input type="checkbox" id="skonto" name="skonto">
+                <label for="skonto">Skonto</label>
             </div>
         </div>
     </div>
-    <br>
-    <div class="row">
-        <div class="col-md-6">
-            <b>Rechnungsnummer:</b>
-            <input type="text" name="Rechnungsnummer" value="">
-        </div>
-        <div class="col-md-6 text-center">
-            <input type="checkbox" id="skonto" name="skonto">
-            <label for="skonto">Skonto</label>
-        </div>
     </div>
-</div>
-</div>
 
-<div class="container" contenteditable="">
-    <p>Klicke den Button um Leistung hinzuzufügen.</p>
+    <section class="contact-form-wrap section">
+        <div class="container" contenteditable="">
+            <p>Klicke den Button um Leistung hinzuzufügen.</p>
 
-    <table class="table table-bordered" id="myTable" border="1">
-        <thead>
-        <tr contenteditable="false">
-            <th scope="col">#</th>
-            <th scope="col">Leistung</th>
-            <th scope="col">Menge</th>
-            <th scope="col">EZ-Preis</th>
-            <th scope="col">Einheitspreis</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td contenteditable="false" scope="row">1</td>
-            <td>Schrauben</td>
-            <td>100</td>
-            <td contenteditable="false">0,10</td>
-            <td contenteditable="false">10</td>
+            <table class="table table-bordered" id="myTable" border="1">
+                <thead>
+                <tr contenteditable="false">
+                    <th scope="col">#</th>
+                    <th scope="col">Leistung</th>
+                    <th scope="col">Menge</th>
+                    <th scope="col">EZ-Preis</th>
+                    <th scope="col">Einheitspreis</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td contenteditable="false" scope="row">1</td>
+                    <td>Schrauben</td>
+                    <td>100</td>
+                    <td contenteditable="false">0,10</td>
+                    <td contenteditable="false">10</td>
 
-        </tr>
-        <tr>
-            <td contenteditable="false" scope="row">2</td>
-            <td>Arbeiter</td>
-            <td>2</td>
-            <td contenteditable="false">100</td>
-            <td contenteditable="false">200</td>
+                </tr>
+                <tr>
+                    <td contenteditable="false" scope="row">2</td>
+                    <td>Arbeiter</td>
+                    <td>2</td>
+                    <td contenteditable="false">100</td>
+                    <td contenteditable="false">200</td>
 
-        </tr>
-        <tr>
-            <td contenteditable="false" scope="row">3</td>
-            <td>Fenster</td>
-            <td>5</td>
-            <td contenteditable="false">80</td>
-            <td contenteditable="false">400</td>
+                </tr>
+                <tr>
+                    <td contenteditable="false" scope="row">3</td>
+                    <td>Fenster</td>
+                    <td>5</td>
+                    <td contenteditable="false">80</td>
+                    <td contenteditable="false">400</td>
 
-        </tr>
-        <tr contenteditable="false">
-            <td colspan="4">Aktueller Netto Preis</td>
-            <td>610</td>
-        </tr>
-        </tbody>
-    </table>
+                </tr>
+                <tr contenteditable="false">
+                    <td colspan="4">Aktueller Netto Preis</td>
+                    <td>610</td>
+                </tr>
+                </tbody>
+            </table>
 
-    <button onclick="myCreateFunction()">+</button>
-    <button onclick="myDeleteFunction()">-</button>
+            <button onclick="myCreateFunction()">+</button>
+            <button onclick="myDeleteFunction()">-</button>
+
+
+            <script>
+                function myCreateFunction() {
+                    var table = document.getElementById("myTable");
+                    var rowCount = $("#myTable tr").length;
+                    var row = table.insertRow(rowCount - 1);
+                    var cell1 = row.insertCell(0);
+                    cell1.setAttribute('contenteditable', false)
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    cell4.setAttribute('contenteditable', false)
+                    var cell5 = row.insertCell(4);
+                    cell5.setAttribute('contenteditable', false)
+                    cell1.innerHTML = rowCount - 1;
+                    cell2.innerHTML = "Leistung";
+                    cell3.innerHTML = "Menge";
+                    cell4.innerHTML = "EZ-Preis";
+                    cell5.innerHTML = "Einheitspreis";
+                }
+
+                function myDeleteFunction() {
+                    var rowCount = $("#myTable tr").length;
+                    document.getElementById("myTable").deleteRow(rowCount - 2);
+                }
+            </script>
+        </div>
+        </div>
+
+        <div class="col-md-9 text-right">
+            <a href="#" class="btn btn-white btn-animate">Rechnung erzeugen</a>
+        </div>
+    </section>
 
 
     {% endblock %}
