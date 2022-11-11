@@ -1,1 +1,73 @@
-{% block body %}{% endblock %}
+{% extends base.html.twig %}
+
+{% block body %}<br>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="contact-block mb-4 mb-lg-0">
+                <h5>Kunde auswählen <a class='fas fa-pen' style='font-size:18px' href="CreateCustomer.html"></a> <a
+                            class='fas fa-trash-alt' style='font-size:18px'></a></h5>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <input type="checkbox" id="skonto" name="skonto">
+            <label for="skonto">Skonto</label>
+        </div>
+        <div class="col-sm-3">
+            <b>Akuteller Netto Preis:</b>
+            <input type="text" name="price" value="">
+            <p></p>
+        </div>
+        <div class="col-sm-3">
+            <a href="#" class="btn btn-white btn-animate">Rechnung erzeugen</a>
+        </div>
+    </div>
+
+    <p></p>
+    <b>Rechnungsnummer:</b>
+    <input type="text" name="Rechnungsnummer" value="">
+    <p></p>
+    </div>
+
+    <section class="contact-form-wrap section">
+        <div class="container">
+            <p>Klicke den Button um Leistung hinzuzufügen.</p>
+
+            <table id="myTable">
+                <tr>
+                    <td>Pos Leistung</td>
+                    <td>Menge EZ-Preis Einheitspreis</td>
+                </tr>
+                <tr>
+                    <td>Row2 cell1</td>
+                    <td>Row2 cell2</td>
+                </tr>
+                <tr>
+                    <td>Row3 cell1</td>
+                    <td>Row3 cell2</td>
+                </tr>
+            </table>
+            <br>
+
+            <button onclick="myCreateFunction()">+</button>
+
+
+            <script>
+                function myCreateFunction() {
+                    var table = document.getElementById("myTable");
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    cell1.innerHTML = "NEW CELL1";
+                    cell2.innerHTML = "NEW CELL2";
+                }
+
+                function myDeleteFunction() {
+                    document.getElementById("myTable").deleteRow(0);
+                }
+            </script>
+        </div>
+        </div>
+    </section>
+{% endblock %}
