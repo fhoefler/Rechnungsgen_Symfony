@@ -15,4 +15,13 @@ class KundenController extends AbstractController
             'controller_name' => 'KundenController',
         ]);
     }
+
+
+    #[Route('/createkunden', name: 'app_createkunden')]
+    public function create(): Response
+    {
+        return $this->render('Rechnungsgen/Create/CreateCustomer.html.twig', [
+            'controller_name' => 'KundenController',
+        ]);
+    }
 }
