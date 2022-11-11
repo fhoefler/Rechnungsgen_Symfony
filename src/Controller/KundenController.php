@@ -11,7 +11,7 @@ class KundenController extends AbstractController
     #[Route('/kunden', name: 'app_kunden')]
     public function index(): Response
     {
-        return $this->render('kunden/index.html.twig', [
+        return $this->render('Rechnungsgen/Kunden.html.twig', [
             'controller_name' => 'KundenController',
         ]);
     }

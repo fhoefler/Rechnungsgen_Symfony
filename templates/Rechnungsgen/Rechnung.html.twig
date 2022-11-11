@@ -1,1 +1,92 @@
-{% block body %}{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="contact-block mb-4 mb-lg-0">
+                <h5>Kunde auswählen <a class='fas fa-pen' style='font-size:18px' href="CreateCustomer.html"></a> <a
+                            class='fas fa-trash-alt' style='font-size:18px'></a></h5>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Rechnungsnummer:</b>
+            <input type="text" name="Rechnungsnummer" value="">
+        </div>
+        <div class="col-md-6 text-center">
+            <input type="checkbox" id="skonto" name="skonto">
+            <label for="skonto">Skonto</label>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container" contenteditable="">
+    <p>Klicke den Button um Leistung hinzuzufügen.</p>
+
+    <table class="table table-bordered" id="myTable" border="1">
+        <thead>
+        <tr contenteditable="false">
+            <th scope="col">#</th>
+            <th scope="col">Leistung</th>
+            <th scope="col">Menge</th>
+            <th scope="col">EZ-Preis</th>
+            <th scope="col">Einheitspreis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td contenteditable="false" scope="row">1</td>
+            <td>Schrauben</td>
+            <td>100</td>
+            <td contenteditable="false">0,10</td>
+            <td contenteditable="false">10</td>
+
+        </tr>
+        <tr>
+            <td contenteditable="false" scope="row">2</td>
+            <td>Arbeiter</td>
+            <td>2</td>
+            <td contenteditable="false">100</td>
+            <td contenteditable="false">200</td>
+
+        </tr>
+        <tr>
+            <td contenteditable="false" scope="row">3</td>
+            <td>Fenster</td>
+            <td>5</td>
+            <td contenteditable="false">80</td>
+            <td contenteditable="false">400</td>
+
+        </tr>
+        <tr contenteditable="false">
+            <td colspan="4">Aktueller Netto Preis</td>
+            <td>610</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button onclick="myCreateFunction()">+</button>
+    <button onclick="myDeleteFunction()">-</button>
+
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="plugins/jquery/jquery.js"></script>
+        <script src="plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+        <script src="plugins/shuffle/shuffle.min.js"></script>
+
+        <!-- Google Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA"></script>
+        <script src="plugins/google-map/gmap.js"></script>
+
+        <script src="js/script.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    {% endblock %}

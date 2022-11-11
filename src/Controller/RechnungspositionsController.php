@@ -11,7 +11,7 @@ class RechnungspositionsController extends AbstractController
     #[Route('/rechnungspositions', name: 'app_rechnungspositions')]
     public function index(): Response
     {
-        return $this->render('rechnungspositions/index.html.twig', [
+        return $this->render('Rechnungsgen/Rechnung.html.twig', [
             'controller_name' => 'RechnungspositionsController',
         ]);
     }

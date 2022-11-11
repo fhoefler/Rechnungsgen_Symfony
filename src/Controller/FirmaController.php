@@ -11,8 +11,8 @@ class FirmaController extends AbstractController
     #[Route('/firma', name: 'app_firma')]
     public function index(): Response
     {
-        return $this->render('firma/index.html.twig', [
-            'controller_name' => 'FirmaController',
+        return $this->render('Rechnungsgen/Changecompanydata.html.twig', [
+            'controller_name' => 'MainController',
         ]);
     }
 }
