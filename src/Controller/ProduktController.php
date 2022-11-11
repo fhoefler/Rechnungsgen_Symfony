@@ -20,4 +20,13 @@ class ProduktController extends AbstractController
         ]);
 
     }
+
+
+    #[Route('/createprodukt', name: 'app_createprodukte')]
+    public function create(): Response
+    {
+        return $this->render('Rechnungsgen/Create/CreateProduct.html.twig', [
+            'controller_name' => 'ProduktController',
+        ]);
+    }
 }
