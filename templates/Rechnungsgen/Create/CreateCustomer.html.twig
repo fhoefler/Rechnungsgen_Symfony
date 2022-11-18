@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="contact-form-wrap section">
+<form method="post">
+
+<section class="contact-form-wrap section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -13,19 +15,11 @@
                 </div>
             </div>
             <b>Kundennummer:</b>
-            <input type="text" name="Kundennummer" value="">
+            <input type="text" id="kundnr" name="Kundennummer" value="">
             <p></p>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <form id="contact-form" class="contact__form " method="post" action="mail.php">
-                        <!-- form message -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                    Your message was sent successfully.
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="row">
                             <div class="col-lg-6">
@@ -40,12 +34,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="subject" id="subject" type="text" class="form-control" placeholder="Telefonnummer" required>
+                                    <input name="telnr" id="telnr" type="text" class="form-control" placeholder="Telefonnummer" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="phone" id="phone" type="text" class="form-control" placeholder="Fntz.">
+                                    <input name="fest" id="fest" type="text" class="form-control" placeholder="Fntz.">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -79,9 +73,9 @@
                         <div>
                             <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Kunde erstellen"></input>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
     </section>
+</form>
 {% endblock %}
