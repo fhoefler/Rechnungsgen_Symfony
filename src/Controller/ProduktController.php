@@ -32,4 +32,15 @@ class ProduktController extends AbstractController
             'controller_name' => 'ProduktController',
         ]);
     }
+
+
+    #[Route('/changeproduct/{id}', name: 'app_changeprodukte')]
+    public function change(ManagerRegistry $registry, int $id): Response
+    {
+        $data = $registry->getManager()->getRepository(Produkt::class)->findOneById($id);
+
+        return $this->render('Rechnungsgen/Change/ChangeProduct.html.twig', [
+            'product' => $data
+        ]);
+    }
 }
