@@ -72,7 +72,7 @@ class FirmaController extends AbstractController
         $data = $registry->getManager()->getRepository(Firma::class)->findOneById($id);
 
         return $this->renderForm('Rechnungsgen/Change/ChangeFirma.html.twig', [
-            'product' => $data
+            'firma' => $data
         ]);
     }
 
