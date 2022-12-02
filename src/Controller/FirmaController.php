@@ -43,10 +43,6 @@ class FirmaController extends AbstractController
             $firma->setUid($request->get("uid"));
 
 
-
-
-
-
             $entityManager = $registry->getManager();
             $entityManager->persist($firma);
             $entityManager->flush();
@@ -56,7 +52,6 @@ class FirmaController extends AbstractController
             'controller_name' => 'FirmaController',
         ]);
     }
-
 
     #[Route('/changefirma/{id}', name: 'app_changefirma', requirements: ["id" => "\d+"])]
     public function change(Request $request, ManagerRegistry $registry, int $id): Response
@@ -82,6 +77,7 @@ class FirmaController extends AbstractController
             $entityManager = $registry->getManager();
             $entityManager->persist($firma);
             $entityManager->flush();
+
             return $this->render('Rechnungsgen/index.html.twig');
         }
 
@@ -92,7 +88,7 @@ class FirmaController extends AbstractController
         ]);
     }
 
-    #[Route('/deletefirma/{id}', name: 'app_delete')]
+    #[Route('/deletefirma/{id}', name: 'app_deletefimra')]
     public function delete(ManagerRegistry $registry, int $id): Response
     {
         $data = null;

@@ -84,7 +84,7 @@ class ProduktController extends AbstractController
         ]);
     }
 
-    #[Route('/deleteproduct/{id}', name: 'app_delete')]
+    #[Route('/deleteproduct/{id}', name: 'app_deleteprodukt')]
     public function delete(ManagerRegistry $registry, int $id): Response
     {
         $data = null;
