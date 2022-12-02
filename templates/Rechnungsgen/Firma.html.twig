@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
 
+{% block body %}
     <div class="row">
-        <div class="col-md-3 offset-md-3 kunde">Produkte:</div>
+        <div class="col-md-3 offset-md-3 kunde">Firma:</div>
         <div class="col-md-3 offset-md-3">
-            <a href="/createprodukt" class="btn btn-white btn-animate">Produkt erstellen</a>
+            <a href="/createfirma" class="btn btn-white btn-animate">Firma erstellen</a>
         </div>
     </div>
 
@@ -15,16 +15,15 @@
 
     {% for data in car_form %}
 
-
-    <div class="container">
-        <div class="row pb-0 align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-6">
-                <div class="contact-block mb-4 mb-lg-0">
-                    <h5>{{ data.name }}  <a class='fas fa-pen' style='font-size:18px; text-align:right; float:right' href="/changeproduct/{{ data.id }}"></a><a class='fas fa-trash-alt' style='font-size:18px; text-align:right; float:right'href="/deleteproduct/{{ data.id }}"></a></h5>
+        <div class="container">
+            <div class="row pb-0 align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact-block mb-4 mb-lg-0">
+                        <h5>{{ data.name }}  <a class='fas fa-pen' style='font-size:18px; text-align:right; float:right;' href="/changefirma/{{ data.id }}"></a><a class='fas fa-trash-alt' style='font-size:18px; text-align:right; float:right;'href="/deletefirma/{{ data.id }}"></a></h5>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     {% endfor %}
 
@@ -32,6 +31,7 @@
 
 
 {% endblock %}
+
 
 {% block javascripts %}
     <script src="plugins/jquery/jquery.js"></script>
