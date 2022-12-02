@@ -6,7 +6,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section-title text-center">
-                        <h2 class="text-md mb-2">Produkt</h2>
+                        <h2 class="text-md mb-2">Firma</h2>
                         <div class="divider mx-auto my-4"></div>
                         <p class="mb-5"></p>
                     </div>
@@ -35,56 +35,48 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="price" id="price" type="text" class="form-control" placeholder="Email" value="{{ firma.email }}" required>
+                                    <input name="email" id="email" type="text" class="form-control" placeholder="Email" value="{{ firma.email }}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="lager" id="lager" type="text" class="form-control" placeholder="Telefonnummer" value="{{ firma.tel }}" required>
+                                    <input name="tel" id="tel" type="text" class="form-control" placeholder="Telefonnummer" value="{{ firma.tel }}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="FNTZ." value="{{ firma.fntz }}">
+                                    <input name="fntz" id="fntz" type="text" class="form-control" placeholder="FNTZ" value="{{ firma.fntz }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="adresse" value="{{ firma.adresse }}">
+                                    <input name="adresse" id="adresse" type="text" class="form-control" placeholder="adresse" value="{{ firma.adresse }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="Stadt" value="{{ firma.stadt }}">
+                                    <input name="stadt" id="stadt" type="text" class="form-control" placeholder="Stadt" value="{{ firma.stadt }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="plz" value="{{ firma.plz }}">
+                                    <input name="plz" id="plz" type="text" class="form-control" placeholder="plz" value="{{ firma.plz }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="FNTZ." value="{{ firma.fntz }}">
+                                    <input name="uid" id="uid" type="text" class="form-control" placeholder="uid " value="{{ firma.uid }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="uid  " value="{{ firma.uid }}">
+                                    <input name="fn" id="fn" type="text" class="form-control" placeholder="FN" value="{{ firma.fn }}">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input name="mwst" id="mwst" type="text" class="form-control" placeholder="FNTZ." value="{{ firma.fntz }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-2 mb-4">
-                            <textarea name="info" id="info" class="form-control" rows="8" placeholder="UID" >{{ firma.uid }}</textarea>
                         </div>
 
                         <div>
-                            <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Produkt erstellen"></input>
+                            <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Firma erstellen"></input>
                         </div>
                     </form>
                 </div>

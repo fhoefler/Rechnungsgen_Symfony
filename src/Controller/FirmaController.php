@@ -32,6 +32,18 @@ class FirmaController extends AbstractController
              */
 
             $firma = new Firma();
+            $firma->setName($request->get("name"));
+            $firma->setEmail($request->get("email"));
+            $firma->setAdresse($request->get("adresse"));
+            $firma->setFn($request->get("fn"));
+            $firma->setFntz($request->get("fntz"));
+            $firma->setPlz($request->get("plz"));
+            $firma->setStadt($request->get("stadt"));
+            $firma->setTel($request->get("tel"));
+            $firma->setUid($request->get("uid"));
+
+
+
 
 
 
@@ -52,19 +64,23 @@ class FirmaController extends AbstractController
         if ($request->getMethod() === "POST") {
 
             /**
-             * @Var Firma $produkt
+             * @Var Firma $firma
              */
 
-            $produkt = $registry->getManager()->getRepository(Firma::class)->findOneById($id);
-            $produkt->setName($request->get("name"));
-            $produkt->setInfo($request->get("info"));
-            $produkt->setEZPreisNetto($request->get("price"));
-            $produkt->setLagerbestand($request->get("lager"));
-            $produkt->setMwst($request->get("mwst"));
+            $firma = $registry->getManager()->getRepository(Firma::class)->findOneById($id);
+            $firma->setName($request->get("name"));
+            $firma->setEmail($request->get("email"));
+            $firma->setAdresse($request->get("adresse"));
+            $firma->setFn($request->get("fn"));
+            $firma->setFntz($request->get("fntz"));
+            $firma->setPlz($request->get("plz"));
+            $firma->setStadt($request->get("stadt"));
+            $firma->setTel($request->get("tel"));
+            $firma->setUid($request->get("uid"));
 
 
             $entityManager = $registry->getManager();
-            $entityManager->persist($produkt);
+            $entityManager->persist($firma);
             $entityManager->flush();
             return $this->render('Rechnungsgen/index.html.twig');
         }
