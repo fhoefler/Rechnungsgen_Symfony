@@ -7,8 +7,7 @@
 
             <div class="col-md-12">
                 <div class="contact-block mb-4 mb-lg-0">
-                    <h5>Kunde auswählen <a class='fas fa-pen' style='font-size:18px' href="CreateCustomer.html"></a> <a
-                                class='fas fa-trash-alt' style='font-size:18px'></a></h5>
+                    <h5>{{ kunde }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/kunden"></a></h5>
                 </div>
             </div>
         </div>
@@ -16,7 +15,7 @@
         <div class="row">
             <div class="col-md-6">
                 <b>Rechnungsnummer:</b>
-                <input type="text" name="Rechnungsnummer" value="">
+                <input type="text" name="Rechnungsnummer" value="{{ rechnung }}">
             </div>
             <div class="col-md-6 text-center">
                 <input type="checkbox" id="skonto" name="skonto">
@@ -77,9 +76,10 @@
 
 
             <script>
+
                 function myCreateFunction() {
                     var table = document.getElementById("myTable");
-                    var rowCount = $("#myTable tr").length;
+                    var rowCount = table.rows.length;
                     var row = table.insertRow(rowCount - 1);
                     var cell1 = row.insertCell(0);
                     cell1.setAttribute('contenteditable', false)
@@ -97,7 +97,8 @@
                 }
 
                 function myDeleteFunction() {
-                    var rowCount = $("#myTable tr").length;
+                    var table = document.getElementById("myTable");
+                    var rowCount = table.rows.length;
                     document.getElementById("myTable").deleteRow(rowCount - 2);
                 }
             </script>

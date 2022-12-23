@@ -35,7 +35,7 @@ class KundenController extends AbstractController
              * @Var Kunden $kunden
              */
 
-             $firma = new Firma();
+            $firma = new Firma();
             $firma = $registry->getManager()->getRepository(Firma::class)->findOneById(1);
 
             $kunden = new Kunden();
