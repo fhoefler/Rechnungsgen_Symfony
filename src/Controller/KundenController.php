@@ -63,8 +63,29 @@ class KundenController extends AbstractController
 
 
     #[Route('/changekunden/{id}', name: 'app_changkunden')]
-    public function change(ManagerRegistry $registry, int $id): Response
+    public function change(Request $request, ManagerRegistry $registry, int $id): Response
     {
+        if ($request->getMethod() === "POST") {
+
+            $kunden = $registry->getManager()->getRepository(Kunden::class)->findOneById($id);
+            $kunden->setName($request->get("name"));
+            $kunden->setEmail($request->get("email"));
+            $kunden->setTel($request->get("telnr"));
+            $kunden->setAddresse($request->get("adress"));
+            $kunden->setPlz($request->get("plz"));
+            $kunden->setStadt($request->get("city"));
+            $kunden->setUid($request->get("uid"));
+            $kunden->setFntz($request->get("fest"));
+            $kunden->setFn($request->get("fn"));
+
+
+            $entityManager = $registry->getManager();
+            $entityManager->persist($kunden);
+            $entityManager->flush();
+            return $this->render('Rechnungsgen/index.html.twig');
+
+        }
+
         $data = $registry->getManager()->getRepository(Kunden::class)->findOneById($id);
 
         return $this->render('Rechnungsgen/Change/ChangeKunden.html.twig', [

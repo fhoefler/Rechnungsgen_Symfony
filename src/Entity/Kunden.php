@@ -25,7 +25,7 @@ class Kunden
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $tel = null;
+    private ?int $tel = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fntz = null;
@@ -98,12 +98,12 @@ class Kunden
         return $this;
     }
 
-    public function getTel(): ?string
+    public function getTel(): ?int
     {
         return $this->tel;
     }
 
-    public function setTel(string $tel): self
+    public function setTel(int $tel): self
     {
         $this->tel = $tel;
 
