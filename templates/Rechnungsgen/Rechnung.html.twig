@@ -7,7 +7,7 @@
 
             <div class="col-md-12">
                 <div class="contact-block mb-4 mb-lg-0">
-                    <h5>{{ kunde }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/kunden"></a></h5>
+                    <h5>{{ kunde }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/kunden/{{ rechnungs.id }}"></a></h5>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <tbody>
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
-                    <td contenteditable="false">Leistung auswählen <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt"></a></td>
+                    <td contenteditable="false">{{ produkt }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt"></a></td>
                     <td>100</td>
                     <td contenteditable="false">0,10</td>
                     <td contenteditable="false">10</td>

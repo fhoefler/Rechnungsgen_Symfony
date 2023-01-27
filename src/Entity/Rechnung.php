@@ -23,7 +23,7 @@ class Rechnung
 
 
     #[ORM\ManyToOne(inversedBy: 'rechnung')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn]
     private ?Kunden $kunde = null;
 
 
