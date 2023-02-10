@@ -42,10 +42,10 @@
                 <tbody>
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
-                    <td contenteditable="false">{{ produkt }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt"></a></td>
-                    <td>100</td>
-                    <td contenteditable="false">0,10</td>
-                    <td contenteditable="false">10</td>
+                    <td contenteditable="false">{{ rechnungsposition.name }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt/{{ kundenId }}/{{ rechnungs.id }}"></a></td>
+                    <td class="menge">{{ menge }}</td>
+                    <td contenteditable="false">{{ rechnungsposition.EZPreisNetto }}</td>
+                    <td contenteditable="false"  >{{ rechnungsposition.EZPreisNetto * menge }}</td>
                 </tr>
                 <tr contenteditable="false">
                     <td colspan="4">Aktueller Netto Preis</td>
@@ -60,6 +60,19 @@
 
             <script>
 
+
+                window.addEventListener("load", function(){
+                    let menge_felder = document.getElementsByClassName("menge");
+                    for (let i = 0; i < menge_felder.length; i++) {
+                        //alert(menge_felder[i].innerText);
+                        console.log(menge_felder[i].innerText);
+                    }
+
+                });
+
+                function testfunc(){
+                    alert();
+                }
                 function myCreateFunction() {
                     var table = document.getElementById("myTable");
                     var rowCount = table.rows.length;

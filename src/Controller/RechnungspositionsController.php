@@ -14,13 +14,28 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RechnungspositionsController extends AbstractController
 {
-    #[Route('/rechnungspositions/{id}/{id2}', name: 'app_rechnungspositions')]
-    public function index(Request $request, ManagerRegistry $registry, int $id, int $id2): Response
+    #[Route('/rechnungspositions/{id}/{id2}/{id3}', name: 'app_rechnungspositions')]
+    public function index(Request $request, ManagerRegistry $registry, int $id, int $id2, int $id3): Response
     {
+        $rechnungsposition = new Rechnungspositionen();
+        $menge = 100;
+        if($id3 != 0)  {
+            $produkt = $registry->getManager()->getRepository(Produkt::class)->findOneById($id3);
+            $rechnung = $registry->getManager()->getRepository(Rechnung::class)->findOneById($id2);
+
+            $rechnungsposition->setRechnung($rechnung);
+            $rechnungsposition->setName($produkt->getName());
+            $rechnungsposition->setEZPreisNetto($produkt->getEZPreisNetto());
+            $rechnungsposition->setMwst($produkt->getMwst());
+
+            $entityManager = $registry->getManager();
+            $entityManager->persist($rechnungsposition);
+            $entityManager->flush();
+        }
 
         if($id == 0)  {
             $data = "Kunden auswählen";
-            $rechnungsposition = 127;
+            $rechnungspositions = 127;
             $kunde = $registry->getManager()->getRepository(Kunden::class)->findOneById(6);
             $rechnung = new Rechnung();
             $rechnung->setNettopreis(0);
@@ -36,7 +51,7 @@ class RechnungspositionsController extends AbstractController
             $kunde = $registry->getManager()->getRepository(Kunden::class)->findOneById($id);
             $rechnung = $registry->getManager()->getRepository(Rechnung::class)->findOneById($id2);
             $rechnung->setKunde($kunde);
-            $rechnungsposition = 100;
+            $rechnungspositions = 100;
 
             $entityManager = $registry->getManager();
             $entityManager->persist($rechnung);
@@ -55,9 +70,12 @@ class RechnungspositionsController extends AbstractController
 
         return $this->render('Rechnungsgen/Rechnung.html.twig', [
             'kunde' => $data,
-            'rechnung' => $rechnungsposition,
+            'rechnung' => $rechnungspositions,
             'produkt' => $produkt,
-            'rechnungs' => $rechnung
+            'rechnungs' => $rechnung,
+            'kundenId' => $id,
+            'rechnungsposition' => $rechnungsposition,
+            'menge' => $menge
         ]);
     }
 
@@ -82,12 +100,11 @@ class RechnungspositionsController extends AbstractController
         return $this->render('Rechnungsgen/Choose/RechnungKunden.html.twig', [
             'car_form' => $data,
             'rechnung' => $id
-
         ]);
     }
 
-    #[Route('/rechnung/produkt', name: 'app_produkt_rechnungspositions')]
-    public function produkt(Request $request, ManagerRegistry $registry): Response
+    #[Route('/rechnung/produkt/{id}/{id2}', name: 'app_produkt_rechnungspositions')]
+    public function produkt(Request $request, ManagerRegistry $registry, int $id, int $id2): Response
     {
 
         $data = $registry->getManager()->getRepository(Produkt::class)->findAll();
@@ -104,8 +121,13 @@ class RechnungspositionsController extends AbstractController
         }
 
         return $this->render('Rechnungsgen/Choose/RechnungProdukt.html.twig', [
-            'car_form' => $data
-
+            'car_form' => $data,
+            'kundenId' => $id,
+            'rechnungId' => $id2
         ]);
+    }
+
+    public function phpFuntcion(){
+        echo "hello";
     }
 }
