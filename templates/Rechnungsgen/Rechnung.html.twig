@@ -60,12 +60,14 @@
 
             <script>
 
-
                 window.addEventListener("load", function(){
                     let menge_felder = document.getElementsByClassName("menge");
                     for (let i = 0; i < menge_felder.length; i++) {
                         //alert(menge_felder[i].innerText);
-                        console.log(menge_felder[i].innerText);
+                        int menge = console.log(menge_felder[i].innerText);
+                        if (menge_felder[i].innerText !== "menage") {
+                            console.log(menge);
+                        }
                     }
 
                 });
