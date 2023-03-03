@@ -25,6 +25,8 @@ class FirmaController extends AbstractController
     #[Route('/createfirma', name: 'app_createfirma')]
     public function create(Request $request, ManagerRegistry $registry): Response
     {
+
+
         if ($request->getMethod() === "POST") {
 
             /**
@@ -40,7 +42,7 @@ class FirmaController extends AbstractController
             $firma->setPlz($request->get("plz"));
             $firma->setStadt($request->get("stadt"));
             $firma->setTel($request->get("tel"));
-            $firma->setUid($request->get("uid"));
+
 
 
             $entityManager = $registry->getManager();

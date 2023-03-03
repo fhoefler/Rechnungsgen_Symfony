@@ -32,7 +32,6 @@ class Firma
 
     #[ORM\Column(length: 255)]
     private ?string $stadt = null;
-
     #[ORM\Column]
     private ?int $plz = null;
 
