@@ -42,7 +42,7 @@
                 <tbody>
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
-                    <td contenteditable="false">{{ rechnungsposition.name }} <a id="selectProdukt" class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt/{{ kundenId }}/{{ rechnungs.id }}"></a></td>
+                    <td contenteditable="false" class="item-name"> <button id="selectProdukt" class="fa fa-ellipsis-v" style='font-size:18px' ></button></td>
                     <td class="menge" ><input type="number" id="menge2" value="1000" onmouseout="tes()"></td>
                     <td contenteditable="false" id="ez">{{ rechnungsposition.EZPreisNetto }}</td>
                     <td contenteditable="false" id="gesamt">{{ rechnungsposition.EZPreisNetto}}</td>
@@ -144,15 +144,17 @@
     {% endblock %}
 
     {% block javascripts %}
-        <script src="plugins/jquery/jquery.js"></script>
-        <script src="plugins/bootstrap/bootstrap.min.js"></script>
-        <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-        <script src="plugins/shuffle/shuffle.min.js"></script>
+        <script src="/plugins/jquery/jquery.js"></script>
+        <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="/plugins/slick-carousel/slick/slick.min.js"></script>
+        <script src="/plugins/shuffle/shuffle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
         <!-- Google Map -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA"></script>
-        <script src="plugins/google-map/gmap.js"></script>
+        <script src="/plugins/google-map/gmap.js"></script>
 
-        <script src="js/script.js"></script>
+        <script src="/js/script.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     {% endblock %}

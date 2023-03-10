@@ -15,7 +15,7 @@
 				height: 'toggle'
 			}, 300);
 		});
-  }
+	}
 
 	// scroll to top button
 	$(window).on('scroll', function () {
@@ -26,144 +26,13 @@
 		}
 	});
 	// scroll-to-top
-  $('.scroll-top-to').on('click', function () {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 500);
-    return false;
-  });
-
-	$('.portfolio-single-slider').slick({
-		infinite: true,
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 2000
+	$('.scroll-top-to').on('click', function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+		return false;
 	});
-
-	$('.clients-logo').slick({
-		infinite: true,
-		arrows: false,
-		autoplay: true,
-		slidesToShow: 6,
-		slidesToScroll: 6,
-		autoplaySpeed: 6000,
-		responsive: [{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 6,
-					slidesToScroll: 6,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 900,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 4
-				}
-			}, {
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 4
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2
-				}
-			}
-
-		]
-	});
-
-	$('.testimonial-wrap').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		infinite: true,
-		dots: true,
-		arrows: false,
-		autoplay: true,
-		vertical: true,
-		verticalSwiping: true,
-		autoplaySpeed: 6000,
-		responsive: [{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 900,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}, {
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-
-		]
-	});
-
-	$('.testimonial-wrap-2').slick({
-		slidesToShow: 2,
-		slidesToScroll: 2,
-		infinite: true,
-		dots: true,
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 6000,
-		responsive: [{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 900,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}, {
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-
-		]
-	});
-
 
 	// counter
 	function counter() {
@@ -191,63 +60,52 @@
 				});
 			});
 		}
-  }
-  $(window).on('scroll', function () {
+	}
+	$(window).on('scroll', function () {
 		counter();
 	});
 
 
-	// Shuffle js filter and masonry
-	if ($('.shuffle-wrapper').length !== 0) {
-		var Shuffle = window.Shuffle;
-		var jQuery = window.jQuery;
-
-		var myShuffle = new Shuffle(document.querySelector('.shuffle-wrapper'), {
-			itemSelector: '.shuffle-item',
-			buffer: 1
-		});
-		jQuery('input[name="shuffle-filter"]').on('change', function (evt) {
-			var input = evt.currentTarget;
-			if (input.checked) {
-				myShuffle.filter(input.value);
-			}
-		});
-	}
-
-	$('#selectProdukt').click(function() {
-		$.ajax({
-			url: "{{ path('app_produkts') }}",
-			method: 'GET',
-			success: function(response) {
-				var itemList = $('<div id="itemList"></div>');
-				itemList.css({
-					'position': 'absolute',
-					'top': '50%',
-					'left': '50%',
-					'transform': 'translate(-50%, -50%)',
-					'width': '400px',
-					'height': '300px',
-					'background-color': '#fff',
-					'border': '1px solid #ccc',
-					'overflow-y': 'auto'
-				});
-				$.each(response, function(index, item) {
-					var itemDiv = $('<div class="item">' + item.name + '</div>');
-					itemDiv.css({
-						'padding': '10px',
-						'border-bottom': '1px solid #ccc',
-						'cursor': 'pointer'
+	$(function() {
+		$('#selectProdukt').click(function() {
+			$.ajax({
+				url: "http://localhost:8080/list",
+				method: 'GET',
+				success: function(response) {
+					var itemList = $('<div id="itemList"></div>');
+					itemList.css({
+						'position': 'absolute',
+						'top': '50%',
+						'left': '50%',
+						'transform': 'translate(-50%, -50%)',
+						'width': '400px',
+						'height': '300px',
+						'background-color': '#fff',
+						'border': '1px solid #ccc',
+						'overflow-y': 'auto'
 					});
-					itemList.append(itemDiv);
-				});
-				itemList.on('click', '.item', function() {
-					var selectedItem = $(this).text();
-					$('#selectItemButton').val(selectedItem);
-					itemList.hide();
-				});
-				$('body').append(itemList);
-			}
+					$.each(response, function(index, item) {
+						var itemDiv = $('<div class="item">' + item.name + '</div>');
+						itemDiv.css({
+							'padding': '10px',
+							'border-bottom': '1px solid #ccc',
+							'cursor': 'pointer'
+						});
+						itemList.append(itemDiv);
+					});
+					itemList.on('click', '.item', function() {
+						var selectedItem = $(this).text();
+						$('#selectItemButton').val(selectedItem);
+						$('td.item-name').text(selectedItem);
+
+						itemList.hide();
+					});
+					$('body').append(itemList);
+				}
+			});
 		});
 	});
+
+	// Shuffle js filter and masonry
 
 })(jQuery);

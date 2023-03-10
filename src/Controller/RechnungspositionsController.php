@@ -7,6 +7,7 @@ use App\Entity\Produkt;
 use App\Entity\Rechnung;
 use App\Entity\Rechnungspositionen;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -128,13 +129,20 @@ class RechnungspositionsController extends AbstractController
         ]);
     }
 
-    #[Route('/list', name: 'app_produkts')]
-    public function listOfProducts(Request $request, ManagerRegistry $registry): Response
+    #[Route('/list', name: 'app_produkts', methods: 'GET')]
+    public function app_produkts(Request $request, ManagerRegistry $registry): JsonResponse
     {
 
         $items = $registry->getManager()->getRepository(Produkt::class)->findAll();
 
-        return new JsonResponse($items);
+        $response = array_map(function ($item) {
+            return [
+                'id' => $item->getId(),
+                'name' => $item->getName()
+            ];
+        }, $items);
+
+        return new JsonResponse($response);
     }
 
     public function phpFuntcion(){
