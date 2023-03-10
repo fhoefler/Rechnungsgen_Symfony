@@ -12,6 +12,7 @@
             </div>
         </div>
         <br>
+
         <div class="row">
             <div class="col-md-6">
                 <b>Rechnungsnummer:</b>
@@ -23,11 +24,19 @@
             </div>
         </div>
     </div>
-    </div>
+
+    <h1> Test </h1>
+    <h1> Test </h1>
+    <h1> Test </h1>
+    <h1> Test </h1>
+    <h1> Test </h1>
 
     <section class="contact-form-wrap section">
         <div class="container" contenteditable="">
             <p>Klicke den Button um Leistung hinzuzufügen.</p>
+
+
+
 
             <table class="table table-bordered" id="myTable" border="1">
                 <thead>
@@ -42,7 +51,7 @@
                 <tbody>
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
-                    <td contenteditable="false">{{ rechnungsposition.name }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt/{{ kundenId }}/{{ rechnungs.id }}"></a></td>
+                    <td contenteditable="false">{{ rechnungsposition.name }} <a id="selectProdukt" class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt/{{ kundenId }}/{{ rechnungs.id }}"></a></td>
                     <td class="menge" ><input type="number" id="menge2" value="1000" onmouseout="tes()"></td>
                     <td contenteditable="false" id="ez">{{ rechnungsposition.EZPreisNetto }}</td>
                     <td contenteditable="false" id="gesamt">{{ rechnungsposition.EZPreisNetto}}</td>
@@ -55,6 +64,22 @@
                 </tr>
                 </tbody>
             </table>
+
+            <script>
+                $('#selectItemButton').click(function() {
+                    // code to load the list of items and display them in the pop-up window
+                });
+
+                $.ajax({
+                    url: 'load-items.php',
+                    method: 'GET',
+                    success: function(response) {
+                        // code to handle the response and display the list of items in the pop-up window
+                    }
+                });
+
+
+            </script>
 
             <button onclick="myCreateFunction()">+</button>
             <button onclick="myDeleteFunction()">-</button>
@@ -94,7 +119,6 @@
                             gesamt.innerHTML(menge * einzelpreis);
                         }
                     }
-
                 });
 
 

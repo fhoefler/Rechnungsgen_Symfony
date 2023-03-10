@@ -214,4 +214,40 @@
 		});
 	}
 
+	$('#selectProdukt').click(function() {
+		$.ajax({
+			url: "{{ path('app_produkts') }}",
+			method: 'GET',
+			success: function(response) {
+				var itemList = $('<div id="itemList"></div>');
+				itemList.css({
+					'position': 'absolute',
+					'top': '50%',
+					'left': '50%',
+					'transform': 'translate(-50%, -50%)',
+					'width': '400px',
+					'height': '300px',
+					'background-color': '#fff',
+					'border': '1px solid #ccc',
+					'overflow-y': 'auto'
+				});
+				$.each(response, function(index, item) {
+					var itemDiv = $('<div class="item">' + item.name + '</div>');
+					itemDiv.css({
+						'padding': '10px',
+						'border-bottom': '1px solid #ccc',
+						'cursor': 'pointer'
+					});
+					itemList.append(itemDiv);
+				});
+				itemList.on('click', '.item', function() {
+					var selectedItem = $(this).text();
+					$('#selectItemButton').val(selectedItem);
+					itemList.hide();
+				});
+				$('body').append(itemList);
+			}
+		});
+	});
+
 })(jQuery);

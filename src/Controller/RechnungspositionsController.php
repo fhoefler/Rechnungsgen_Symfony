@@ -127,6 +127,15 @@ class RechnungspositionsController extends AbstractController
         ]);
     }
 
+    #[Route('/list', name: 'app_produkts')]
+    public function listOfProducts(Request $request, ManagerRegistry $registry): Response
+    {
+
+        $items = $registry->getManager()->getRepository(Produkt::class)->findAll();
+
+        return new JsonResponse($items);
+    }
+
     public function phpFuntcion(){
         echo "hello";
     }
