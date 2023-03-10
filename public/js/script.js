@@ -31,7 +31,6 @@
 			scrollTop: 0
 		}, 500);
 		return false;
-		return false;
 	});
 
 	// counter
@@ -75,13 +74,13 @@
 					var itemList = $('<div id="itemList"></div>');
 					itemList.css({
 						'position': 'absolute',
-						'top': '50%',
+						'top': '25%',
 						'left': '50%',
 						'transform': 'translate(-50%, -50%)',
 						'width': '400px',
 						'height': '300px',
-						'background-color': '#fff',
-						'border': '1px solid #ccc',
+						'background-color': '#9f9f9f',
+						'border': '6px solid #000000FF',
 						'overflow-y': 'auto'
 					});
 					$.each(response, function(index, item) {
@@ -95,9 +94,7 @@
 					});
 					itemList.on('click', '.item', function() {
 						var selectedItem = $(this).text();
-						$('#selectItemButton').val(selectedItem);
 						$('td.item-name').text(selectedItem);
-
 						itemList.hide();
 					});
 					$('body').append(itemList);
