@@ -43,9 +43,11 @@
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
                     <td contenteditable="false">{{ rechnungsposition.name }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt/{{ kundenId }}/{{ rechnungs.id }}"></a></td>
-                    <td class="menge">{{ menge }}</td>
-                    <td contenteditable="false">{{ rechnungsposition.EZPreisNetto }}</td>
-                    <td contenteditable="false"  >{{ rechnungsposition.EZPreisNetto * menge }}</td>
+                    <td class="menge" ><input type="number" id="menge2" value="1000" onmouseout="tes()"></td>
+                    <td contenteditable="false" id="ez">{{ rechnungsposition.EZPreisNetto }}</td>
+                    <td contenteditable="false" id="gesamt">{{ rechnungsposition.EZPreisNetto}}</td>
+                    <script>
+                    </script>
                 </tr>
                 <tr contenteditable="false">
                     <td colspan="4">Aktueller Netto Preis</td>
@@ -60,6 +62,24 @@
 
             <script>
 
+                function tes() {
+                    var table = document.getElementById("myTable");
+                    var menge = document.getElementById('menge2').value;
+                    var einzelpreis = document.getElementsByTagName("td")[3];
+                    var td_text = einzelpreis.innerHTML;
+                    var gesamt = document.getElementById('gesamt');
+                    console.log(td_text);
+
+                    console.log(parseInt(menge) * parseInt(td_text));
+                    var gesamtpreis = menge * td_text;
+                    /*gesamt.innerHTML(gesamtpreis);*/
+                    /*var cell5 = row.changeVersion(gesamtpreis);*/
+                    gesamt.innerText = gesamtpreis;
+                }
+
+            </script>
+            <script>
+
                 window.addEventListener("load", function(){
                     let menge_felder = document.getElementsByClassName("menge");
                     for (let i = 0; i < menge_felder.length; i++) {
@@ -67,10 +87,16 @@
                         int menge = console.log(menge_felder[i].innerText);
                         if (menge_felder[i].innerText !== "menage") {
                             console.log(menge);
+                            var menge = document.getElementById('menge2').value;
+                            var einzelpreis = document.getElementById('ez').value;
+                            var gesamt = document.getElementById('gesamt');
+                            console.log(menge * einzelpreis);
+                            gesamt.innerHTML(menge * einzelpreis);
                         }
                     }
 
                 });
+
 
                 function testfunc(){
                     alert();
@@ -86,7 +112,7 @@
                     var cell4 = row.insertCell(3);
                     cell4.setAttribute('contenteditable', false)
                     var cell5 = row.insertCell(4);
-                    cell5.setAttribute('contenteditable', false)
+                    cell5.setAttribute()
                     cell1.innerHTML = rowCount - 1;
                     cell2.innerHTML = "Leistung";
                     cell3.innerHTML = "Menge";
