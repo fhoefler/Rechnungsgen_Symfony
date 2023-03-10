@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-6">
                 <b>Rechnungsnummer:</b>
-                <input type="text" name="Rechnungsnummer" value="{{ rechnung }}">
+                <input type="text" name="Rechnungsnummer" value="{{ id2 }}">
             </div>
             <div class="col-md-6 text-center">
                 <input type="checkbox" id="skonto" name="skonto">
@@ -43,11 +43,9 @@
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
                     <td contenteditable="false">{{ rechnungsposition.name }} <a class="fa fa-ellipsis-v" style='font-size:18px' href="/rechnung/produkt/{{ kundenId }}/{{ rechnungs.id }}"></a></td>
-                    <td class="menge" ><input type="number" id="menge2" value="1000" onmouseout="tes()"></td>
+                    <td class="menge" ><input type="number" id="menge2" value="1000" onchange="tes()"></td>
                     <td contenteditable="false" id="ez">{{ rechnungsposition.EZPreisNetto }}</td>
                     <td contenteditable="false" id="gesamt">{{ rechnungsposition.EZPreisNetto}}</td>
-                    <script>
-                    </script>
                 </tr>
                 <tr contenteditable="false">
                     <td colspan="4">Aktueller Netto Preis</td>
@@ -56,11 +54,10 @@
                 </tbody>
             </table>
 
-            <button onclick="myCreateFunction()">+</button>
-            <button onclick="myDeleteFunction()">-</button>
 
 
             <script>
+
 
                 function tes() {
                     var table = document.getElementById("myTable");
@@ -78,6 +75,42 @@
                 }
 
             </script>
+
+            <button onclick="myCreateFunction()">+</button>
+            <button onclick="myDeleteFunction()">-</button>
+
+            <script>
+
+
+                function testfunc(){
+                    alert();
+                }
+                function myCreateFunction() {
+                    var table = document.getElementById("myTable");
+                    var rowCount = table.rows.length;
+                    var row = table.insertRow(rowCount - 1);
+                    var cell1 = row.insertCell(0);
+                    cell1.setAttribute('contenteditable', false)
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    cell4.setAttribute('contenteditable', false)
+                    var cell5 = row.insertCell(4);
+                    cell1.innerHTML = rowCount - 1;
+                    cell2.innerHTML = "Leistung"
+                    cell3.innerHTML = "Menge";
+                    cell4.innerHTML = "EZ-Preis";
+                    cell5.innerHTML = "Einheitspreis";
+                }
+
+                function myDeleteFunction() {
+                    var table = document.getElementById("myTable");
+                    var rowCount = table.rows.length;
+                    document.getElementById("myTable").deleteRow(rowCount - 2);
+                }
+
+            </script>
+
             <script>
 
                 window.addEventListener("load", function(){
@@ -96,35 +129,6 @@
                     }
 
                 });
-
-
-                function testfunc(){
-                    alert();
-                }
-                function myCreateFunction() {
-                    var table = document.getElementById("myTable");
-                    var rowCount = table.rows.length;
-                    var row = table.insertRow(rowCount - 1);
-                    var cell1 = row.insertCell(0);
-                    cell1.setAttribute('contenteditable', false)
-                    var cell2 = row.insertCell(1);
-                    var cell3 = row.insertCell(2);
-                    var cell4 = row.insertCell(3);
-                    cell4.setAttribute('contenteditable', false)
-                    var cell5 = row.insertCell(4);
-                    cell5.setAttribute()
-                    cell1.innerHTML = rowCount - 1;
-                    cell2.innerHTML = "Leistung";
-                    cell3.innerHTML = "Menge";
-                    cell4.innerHTML = "EZ-Preis";
-                    cell5.innerHTML = "Einheitspreis";
-                }
-
-                function myDeleteFunction() {
-                    var table = document.getElementById("myTable");
-                    var rowCount = table.rows.length;
-                    document.getElementById("myTable").deleteRow(rowCount - 2);
-                }
             </script>
         </div>
         </div>

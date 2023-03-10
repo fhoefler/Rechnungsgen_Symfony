@@ -75,7 +75,8 @@ class RechnungspositionsController extends AbstractController
             'rechnungs' => $rechnung,
             'kundenId' => $id,
             'rechnungsposition' => $rechnungsposition,
-            'menge' => $menge
+            'menge' => $menge,
+            'id2' => $id2
         ]);
     }
 
