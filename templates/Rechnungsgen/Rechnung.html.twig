@@ -43,9 +43,9 @@
                 <tr>
                     <td contenteditable="false" scope="row">1</td>
                     <td contenteditable="false" class="item-name"> <button id="selectProdukt" class="fa fa-ellipsis-v" style='font-size:18px' ></button></td>
-                    <td class="menge" ><input type="number" id="menge2" value="1000" onmouseout="tes()"></td>
-                    <td contenteditable="false" id="ez">{{ rechnungsposition.EZPreisNetto }}</td>
-                    <td contenteditable="false" id="gesamt">{{ rechnungsposition.EZPreisNetto}}</td>
+                    <td class="menge" ><input type="number" id="menge2" value="1" onmouseout="tes()"></td>
+                    <td contenteditable="false" class="ez-preis">{{ rechnungsposition.EZPreisNetto}} </td>
+                    <td contenteditable="false" id="gesamt" class="einheitspreis">{{ rechnungsposition.EZPreisNetto}}</td>
                     <script>
                     </script>
                 </tr>
@@ -99,8 +99,8 @@
                     cell4.setAttribute('contenteditable', false)
                     var cell5 = row.insertCell(4);
                     cell1.innerHTML = rowCount - 1;
-                    cell2.innerHTML = "Leistung"
-                    cell3.innerHTML = "Menge";
+                    cell2.innerHTML = "<td contenteditable='false' class='item-name'><button id='selectProdukt' class='fa fa-ellipsis-v' style='font-size:18px';></button></td>";
+                    cell3.innerHTML = "<td class='menge' ><input type='number' id='menge2' value='1' onmouseout='tes()'></td>";
                     cell4.innerHTML = "EZ-Preis";
                     cell5.innerHTML = "Einheitspreis";
                 }
@@ -119,7 +119,7 @@
                     let menge_felder = document.getElementsByClassName("menge");
                     for (let i = 0; i < menge_felder.length; i++) {
                         //alert(menge_felder[i].innerText);
-                        int menge = console.log(menge_felder[i].innerText);
+                        var menge = console.log(menge_felder[i].innerText);
                         if (menge_felder[i].innerText !== "menage") {
                             console.log(menge);
                             var menge = document.getElementById('menge2').value;

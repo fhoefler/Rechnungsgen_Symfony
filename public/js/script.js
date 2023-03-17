@@ -85,6 +85,7 @@
 					});
 					$.each(response, function(index, item) {
 						var itemDiv = $('<div class="item">' + item.name + '</div>');
+
 						itemDiv.css({
 							'padding': '10px',
 							'border-bottom': '1px solid #ccc',
@@ -95,6 +96,8 @@
 					itemList.on('click', '.item', function() {
 						var selectedItem = $(this).text();
 						$('td.item-name').text(selectedItem);
+						$('td.ez-preis').text(10);
+						$('td.einheitspreis').text(10);
 						itemList.hide();
 					});
 					$('body').append(itemList);
@@ -102,6 +105,7 @@
 			});
 		});
 	});
+
 
 	// Shuffle js filter and masonry
 

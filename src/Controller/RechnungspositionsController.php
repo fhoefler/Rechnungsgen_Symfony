@@ -28,6 +28,7 @@ class RechnungspositionsController extends AbstractController
             $rechnungsposition->setName($produkt->getName());
             $rechnungsposition->setEZPreisNetto($produkt->getEZPreisNetto());
             $rechnungsposition->setMwst($produkt->getMwst());
+            $rechnungsposition->setMenge(1000);
 
             $entityManager = $registry->getManager();
             $entityManager->persist($rechnungsposition);
@@ -85,8 +86,6 @@ class RechnungspositionsController extends AbstractController
     public function kunden(Request $request, ManagerRegistry $registry, int $id): Response
     {
         $data = $registry->getManager()->getRepository(Kunden::class)->findAll();
-
-
 
         if ($request->getMethod() === "POST") {
 

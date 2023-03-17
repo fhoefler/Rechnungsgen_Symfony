@@ -24,6 +24,9 @@ class Rechnungspositionen
     #[ORM\Column(length: 255)]
     private ?string $mwst = null;
 
+    #[ORM\Column]
+    private ?int $menge = null;
+
     #[ORM\ManyToOne(inversedBy: 'Rechnungsposition')]
     private ?Rechnung $rechnung = null;
 
@@ -74,6 +77,24 @@ class Rechnungspositionen
 
         return $this;
     }
+
+    /**
+     * @return int|null
+     */
+    public function getMenge(): ?int
+    {
+        return $this->menge;
+    }
+
+    /**
+     * @param int|null $menge
+     */
+    public function setMenge(?int $menge): void
+    {
+        $this->menge = $menge;
+    }
+
+
 
     /**
      * @return Collection<int, Rechnung>
