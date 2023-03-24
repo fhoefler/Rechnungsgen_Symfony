@@ -89,7 +89,8 @@
 						'overflow-y': 'auto'
 					});
 					$.each(response, function(index, item) {
-						var itemDiv = $('<div class="item">' + item.name + '</div>');
+						var itemDiv = $('<div class="item">' + item.name + "  " + item.ezpreis + '</div>');
+
 						itemDiv.css({
 							'padding': '10px',
 							'border-bottom': '1px solid #FFFFFFFF',
@@ -98,8 +99,10 @@
 						itemList.append(itemDiv);
 					});
 					itemList.on('click', '.item', function() {
-						var selectedItem = $(this).text();
-						$('td.item-name').text(selectedItem);
+						var selectedItem = $(this).text().split("  ");
+						$('td.item-name').text(selectedItem[0]);
+						$('td.ez-preis').text(selectedItem[1]);
+						$('td.einheitspreis').text(selectedItem[1]);
 						itemList.hide();
 					});
 					$('body').append(itemList);
@@ -112,7 +115,6 @@
 		// Add click event handler to button
 
 	});
-
 
 
 	// Shuffle js filter and masonry

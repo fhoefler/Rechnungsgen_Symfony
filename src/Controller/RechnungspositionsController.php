@@ -137,7 +137,8 @@ class RechnungspositionsController extends AbstractController
         $response = array_map(function ($item) {
             return [
                 'id' => $item->getId(),
-                'name' => $item->getName()
+                'name' => $item->getName(),
+                'ezpreis' => $item->getEZPreisNetto()
             ];
         }, $items);
 
