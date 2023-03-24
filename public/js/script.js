@@ -71,7 +71,7 @@
 	});
 
 	$(document).ready(function() {
-		$.fn.selectProduct = function(){
+		$.fn.selectProduct = function(param){
 			$.ajax({
 				url: "http://localhost:8080/list",
 				method: 'GET',
@@ -100,9 +100,10 @@
 					});
 					itemList.on('click', '.item', function() {
 						var selectedItem = $(this).text().split("  ");
-						$('td.item-name').text(selectedItem[0]);
-						$('td.ez-preis').text(selectedItem[1]);
-						$('td.einheitspreis').text(selectedItem[1]);
+						console.log(param);
+						$('tr#'+ param + ' td.item-name').text(selectedItem[0]);
+						$('tr#'+ param + ' td.ez-preis').text(selectedItem[1]);
+						$('tr#'+ param + ' td.einheitspreis').text("<input type='number' id='menge2' value='1 onMouseOut='tes()'>");
 						itemList.hide();
 					});
 					$('body').append(itemList);
@@ -110,7 +111,8 @@
 			});		}
 		$(document).on('click', '.selectProduct', function() {
 			// Call selectProduct() function
-			$.fn.selectProduct();
+			var rowId = $(this).closest('tr').attr('id');
+			$.fn.selectProduct(rowId);
 		});
 		// Add click event handler to button
 
