@@ -73,8 +73,8 @@
 				success: function(response) {
 					var itemList = $('<div id="itemList"></div>');
 					itemList.css({
-						'position': 'absolute',
-						'top': '25%',
+						'position': 'center',
+						'top': '50%',
 						'left': '50%',
 						'transform': 'translate(-50%, -50%)',
 						'width': '400px',
@@ -95,8 +95,8 @@
 					});
 					itemList.on('click', '.item', function() {
 						var selectedItem = $(this).text();
-						$('td.item-name').text(selectedItem);
-						$('td.ez-preis').text(10);
+						$('td.item-name').text(selectedItem.name);
+						$('td.ez-preis').text();
 						$('td.einheitspreis').text(10);
 						itemList.hide();
 					});
