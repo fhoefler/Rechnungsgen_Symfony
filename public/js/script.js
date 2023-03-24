@@ -15,7 +15,7 @@
 				height: 'toggle'
 			}, 300);
 		});
-	}
+  }
 
 	// scroll to top button
 	$(window).on('scroll', function () {
@@ -26,12 +26,12 @@
 		}
 	});
 	// scroll-to-top
-	$('.scroll-top-to').on('click', function () {
-		$('body,html').animate({
-			scrollTop: 0
-		}, 500);
-		return false;
-	});
+  $('.scroll-top-to').on('click', function () {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 500);
+    return false;
+  });
 
 	// counter
 	function counter() {
@@ -59,52 +59,60 @@
 				});
 			});
 		}
-	}
-	$(window).on('scroll', function () {
+  }
+  $(window).on('scroll', function () {
 		counter();
 	});
 
 
-	$(function() {
-		$('#selectProdukt').click(function() {
+
+	$(function(){
+
+	});
+
+	$(document).ready(function() {
+		$.fn.selectProduct = function(){
 			$.ajax({
 				url: "http://localhost:8080/list",
 				method: 'GET',
 				success: function(response) {
 					var itemList = $('<div id="itemList"></div>');
 					itemList.css({
-						'position': 'center',
-						'top': '50%',
+						'position': 'absolute',
+						'top': '25%',
 						'left': '50%',
 						'transform': 'translate(-50%, -50%)',
 						'width': '400px',
 						'height': '300px',
-						'background-color': '#9f9f9f',
+						'background-color': '#ffffff',
 						'border': '6px solid #000000FF',
 						'overflow-y': 'auto'
 					});
 					$.each(response, function(index, item) {
 						var itemDiv = $('<div class="item">' + item.name + '</div>');
-
 						itemDiv.css({
 							'padding': '10px',
-							'border-bottom': '1px solid #ccc',
+							'border-bottom': '1px solid #FFFFFFFF',
 							'cursor': 'pointer'
 						});
 						itemList.append(itemDiv);
 					});
 					itemList.on('click', '.item', function() {
 						var selectedItem = $(this).text();
-						$('td.item-name').text(selectedItem.name);
-						$('td.ez-preis').text();
-						$('td.einheitspreis').text(10);
+						$('td.item-name').text(selectedItem);
 						itemList.hide();
 					});
 					$('body').append(itemList);
 				}
-			});
+			});		}
+		$(document).on('click', '.selectProduct', function() {
+			// Call selectProduct() function
+			$.fn.selectProduct();
 		});
+		// Add click event handler to button
+
 	});
+
 
 
 	// Shuffle js filter and masonry
