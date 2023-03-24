@@ -51,7 +51,7 @@
                 </tr>
                 <tr contenteditable="false">
                     <td colspan="4">Aktueller Netto Preis</td>
-                    <td>610</td>
+                    <td id="gesamtpreis" class="gesamtpreis">0</td>
                 </tr>
                 </tbody>
             </table>
@@ -67,6 +67,7 @@
                     var einzelpreis = document.getElementsByTagName("td")[3];
                     var td_text = einzelpreis.innerHTML;
                     var gesamt = document.getElementById('gesamt');
+                    /*var allegesamtpreis = document.getElementById('gesamtpreis');*/
                     console.log(td_text);
 
                     console.log(parseInt(menge) * parseInt(td_text));
@@ -74,6 +75,7 @@
                     /*gesamt.innerHTML(gesamtpreis);*/
                     /*var cell5 = row.changeVersion(gesamtpreis);*/
                     gesamt.innerText = gesamtpreis;
+                    /*allegesamtpreis.innerText = gesamtpreis;*/
                 }
 
             </script>
@@ -101,8 +103,8 @@
                     cell1.innerHTML = rowCount - 1;
                     cell2.innerHTML = "<td contenteditable='false' class='item-name'><button class='selectProduct'  class='fa fa-ellipsis-v' style='font-size:18px';></button></td>";
                     cell3.innerHTML = "<td class='menge' ><input type='number' id='menge2' value='1' onmouseout='tes()'></td>";
-                    cell4.innerHTML = "EZ-Preis";
-                    cell5.innerHTML = "Einheitspreis";
+                    cell4.innerHTML = "<td contenteditable='false' class='ez-preis'></td>";
+                    cell5.innerHTML = "<td contenteditable='false' id='gesamt' class='einheitspreis'></td>";
                 }
 
                 function myDeleteFunction() {

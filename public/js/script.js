@@ -89,7 +89,7 @@
 						'overflow-y': 'auto'
 					});
 					$.each(response, function(index, item) {
-						var itemDiv = $('<div class="item">' + item.name + "  " + item.ezpreis + '</div>');
+						var itemDiv = $('<div class="item">' + item.name + "  " + item.ezpreis + "€" + '</div>');
 
 						itemDiv.css({
 							'padding': '10px',
