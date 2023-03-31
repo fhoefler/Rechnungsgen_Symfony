@@ -43,7 +43,7 @@
                 <tr id="1">
                     <td contenteditable="false" scope="row">1</td>
                     <td contenteditable="false" class="item-name"> <button class="selectProduct" class="fa fa-ellipsis-v" style='font-size:18px' ></button></td>
-                    <td class="menge" ><input type="number" id="menge2" value="1" onmouseout="tes()"></td>
+                    <td class="menge" ><input type="number" id="menge2" value="1" onmouseout="updateTable(this)"></td>
                     <td contenteditable="false" class="ez-preis">{{ rechnungsposition.EZPreisNetto}} </td>
                     <td contenteditable="false" id="gesamt" class="einheitspreis">{{ rechnungsposition.EZPreisNetto}}</td>
                     <script>
@@ -61,21 +61,24 @@
             <script>
 
 
-                function tes() {
-                    var table = document.getElementById("myTable");
-                    var menge = document.getElementById('menge2').value;
+                function updateTable(td) {
+                    var bid = this.id; // button ID
+                    var trid = parseInt($(this).parent().prev().attr("td"));
+                    console.log(trid);
+
+
+                    var menge = parseInt(document.getElementById('menge2').value);
+
                     var einzelpreis = document.getElementsByTagName("td")[3];
                     var td_text = einzelpreis.innerHTML;
                     var gesamt = document.getElementById('gesamt');
-                    /*var allegesamtpreis = document.getElementById('gesamtpreis');*/
-                    console.log(td_text);
-
-                    console.log(parseInt(menge) * parseInt(td_text));
+                    var allegesamtpreis = document.getElementById('gesamtpreis');
                     var gesamtpreis = menge * td_text;
                     /*gesamt.innerHTML(gesamtpreis);*/
                     /*var cell5 = row.changeVersion(gesamtpreis);*/
                     gesamt.innerText = gesamtpreis;
-                    /*allegesamtpreis.innerText = gesamtpreis;*/
+                    allegesamtpreis.innerText = gesamtpreis;
+
                 }
 
             </script>
@@ -89,7 +92,7 @@
                 function testfunc(){
                     alert();
                 }
-                function myCreateFunction() {
+                function myCreateFunction(qualifiedName, value) {
                     var table = document.getElementById("myTable");
                     var rowCount = table.rows.length;
                     var row = table.insertRow(rowCount - 1);
@@ -101,12 +104,13 @@
                     cell1.setAttribute('id', rowCount - 1)
                     cell2.setAttribute('class', "item-name")
                     cell3.setAttribute('class', "menge")
+                    cell3.addEventListener("mouseout", (event) => updateTable(this));
                     cell4.setAttribute('class', "ez-preis")
                     var cell5 = row.insertCell(4);
                     cell5.setAttribute('class', "einheitspreis")
                     cell1.innerHTML = rowCount - 1;
                     cell2.innerHTML = "<button class='selectProduct fa fa-ellipsis-v' style='font-size:18px';></button>";
-                    cell3.innerHTML = "<input type='number' id='menge2' value='1' onmouseout='tes()'>";
+                    cell3.innerHTML = "<input type='number' id='menge2' value='1' onmouseout='updateTable(this)'>";
                     cell4.innerHTML = "";
                     cell5.innerHTML = "";
                 }

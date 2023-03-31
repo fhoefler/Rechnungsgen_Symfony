@@ -60,6 +60,8 @@
 			});
 		}
   }
+
+
   $(window).on('scroll', function () {
 		counter();
 	});
@@ -89,7 +91,7 @@
 						'overflow-y': 'auto'
 					});
 					$.each(response, function(index, item) {
-						var itemDiv = $('<div class="item">' + item.name + "  " + item.ezpreis + "€" + '</div>');
+						var itemDiv = $('<div class="item">' + item.name + "  " + item.ezpreis + '</div>');
 
 						itemDiv.css({
 							'padding': '10px',
@@ -103,7 +105,6 @@
 						console.log(param);
 						$('tr#'+ param + ' td.item-name').text(selectedItem[0]);
 						$('tr#'+ param + ' td.ez-preis').text(selectedItem[1]);
-						$('tr#'+ param + ' td.einheitspreis').text("<input type='number' id='menge2' value='1 onMouseOut='tes()'>");
 						itemList.hide();
 					});
 					$('body').append(itemList);
@@ -118,6 +119,41 @@
 
 	});
 
+	$(document).ready(function() {
+		$.fn.updateTable = function (param) {
+			$.ajax({
+				url: "http://localhost:8080/list",
+				method: 'GET',
+				success: function (response) {
+
+
+				}
+
+			});
+		}
+		// Add click event handler to button
+		$(document).on('onchange', '.menge2', function () {
+
+			var bid = this.id; // button ID
+			var trid = $(this).closest('tr').attr('id');
+			console.log("h");
+
+
+			var menge = parseInt(document.getElementById('menge2').value);
+
+			var einzelpreis = document.getElementsByTagName("td")[3];
+			var td_text = einzelpreis[trid].innerHTML;
+			var gesamt = document.getElementById('gesamt');
+			var allegesamtpreis = document.getElementById('gesamtpreis');
+			var gesamtpreis = menge * td_text;
+			/*gesamt.innerHTML(gesamtpreis);*/
+			/*var cell5 = row.changeVersion(gesamtpreis);*/
+			gesamt[trid].innerText = gesamtpreis;
+			allegesamtpreis.innerText = gesamtpreis;
+		});
+		// Add click event handler to button
+
+	});
 
 	// Shuffle js filter and masonry
 
