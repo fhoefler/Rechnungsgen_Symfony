@@ -145,6 +145,33 @@ class RechnungspositionsController extends AbstractController
         return new JsonResponse($response);
     }
 
+    #[Route('/createrechnung', name: 'app_createrechnung')]
+    public function create(Request $request, ManagerRegistry $registry): Response
+    {
+        if ($request->getMethod() === "POST") {
+
+            /**
+             * @Var Rechnungspositionen $rechnungspostion
+             */
+
+            $rechnungspostion = new Rechnungspositionen();
+            $rechnungspostion->se($request->get("name"));
+            $rechnungspostion->setInfo($request->get("info"));
+            $rechnungspostion->setEZPreisNetto($request->get("price"));
+            $rechnungspostion->setLagerbestand($request->get("lager"));
+            $rechnungspostion->setMwst($request->get("mwst"));
+
+
+            $entityManager = $registry->getManager();
+            $entityManager->persist(dmeptPeW);
+            $entityManager->flush();
+            return $this->render('Rechnungsgen/index.html.twig');
+        }
+        return $this->render('Rechnungsgen/index.html.twig', [
+            'controller_name' => 'RechnungsPositionController',
+        ]);
+    }
+
     public function phpFuntcion(){
         echo "hello";
     }
