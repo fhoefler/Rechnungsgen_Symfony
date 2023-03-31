@@ -56,10 +56,7 @@
                 </tbody>
             </table>
 
-
-
             <script>
-
 
                 function updateTable(td) {
                     var bid = this.id; // button ID
@@ -110,7 +107,7 @@
                     cell5.setAttribute('class', "einheitspreis")
                     cell1.innerHTML = rowCount - 1;
                     cell2.innerHTML = "<button class='selectProduct fa fa-ellipsis-v' style='font-size:18px';></button>";
-                    cell3.innerHTML = "<input type='number' id='menge2' value='1' onmouseout='updateTable(this)'>";
+                    cell3.innerHTML = "<input class='updateTable' type='number' id='menge2' value='1' onmouseout='updateTable(this)'>";
                     cell4.innerHTML = "";
                     cell5.innerHTML = "";
                 }

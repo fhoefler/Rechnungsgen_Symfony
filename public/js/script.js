@@ -125,10 +125,7 @@
 				url: "http://localhost:8080/list",
 				method: 'GET',
 				success: function (response) {
-
-
 				}
-
 			});
 		}
 		// Add click event handler to button
@@ -136,11 +133,9 @@
 
 			var bid = this.id; // button ID
 			var trid = $(this).closest('tr').attr('id');
-			console.log("h");
 
 
 			var menge = parseInt(document.getElementById('menge2').value);
-
 			var einzelpreis = document.getElementsByTagName("td")[3];
 			var td_text = einzelpreis[trid].innerHTML;
 			var gesamt = document.getElementById('gesamt');

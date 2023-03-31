@@ -145,6 +145,7 @@ class RechnungspositionsController extends AbstractController
         return new JsonResponse($response);
     }
 
+
     #[Route('/createrechnung', name: 'app_createrechnung')]
     public function create(Request $request, ManagerRegistry $registry): Response
     {
