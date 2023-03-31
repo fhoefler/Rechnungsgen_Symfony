@@ -56,7 +56,10 @@
                 </tbody>
             </table>
 
+
+
             <script>
+
 
                 function updateTable(td) {
                     var bid = this.id; // button ID
@@ -107,7 +110,7 @@
                     cell5.setAttribute('class', "einheitspreis")
                     cell1.innerHTML = rowCount - 1;
                     cell2.innerHTML = "<button class='selectProduct fa fa-ellipsis-v' style='font-size:18px';></button>";
-                    cell3.innerHTML = "<input class='updateTable' type='number' id='menge2' value='1' onmouseout='updateTable(this)'>";
+                    cell3.innerHTML = "<input class='updateTable' type='number' id='menge2' value='1' onmouseout='updateTable(this)'>"";
                     cell4.innerHTML = "";
                     cell5.innerHTML = "";
                 }
@@ -143,12 +146,12 @@
         </div>
 
         <div class="col-md-9 text-right">
-            <a href="#" class="btn btn-white btn-animate">Rechnung erzeugen</a>
+            <a href="#" id="createRechnung" class="btn btn-white btn-animate">Rechnung erzeugen</a>
         </div>
     </section>
 
 
-    {% endblock %}
+{% endblock %}
 
     {% block javascripts %}
         <script src="/plugins/jquery/jquery.js"></script>

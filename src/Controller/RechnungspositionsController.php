@@ -146,27 +146,42 @@ class RechnungspositionsController extends AbstractController
     }
 
 
-    #[Route('/createrechnung', name: 'app_createrechnung')]
-    public function create(Request $request, ManagerRegistry $registry): Response
+    #[Route('/createrechnung/{id}', name: 'app_createrechnung')]
+    public function createrechnung(Request $request, ManagerRegistry $registry,int $id): Response
     {
-        if ($request->getMethod() === "POST") {
 
+        if ($request->getMethod() === "POST") {
+            $jsonData = json_decode($request->getContent(), true);
             /**
              * @Var Rechnungspositionen $rechnungspostion
              */
 
-            $rechnungspostion = new Rechnungspositionen();
-            $rechnungspostion->se($request->get("name"));
-            $rechnungspostion->setInfo($request->get("info"));
-            $rechnungspostion->setEZPreisNetto($request->get("price"));
-            $rechnungspostion->setLagerbestand($request->get("lager"));
-            $rechnungspostion->setMwst($request->get("mwst"));
-
-
             $entityManager = $registry->getManager();
-            $entityManager->persist(dmeptPeW);
+
+            $jsonData = $request->getContent();
+            $data = json_decode($jsonData, true);
+
+            /**
+             * @Var Rechnung rechnung
+             */
+
+            $rechnung = new Rechnung();
+            $rechnung = $registry->getManager()->getRepository(Rechnung::class)->findOneById($id);
+
+            foreach ($data as $row) {
+                $rechnungspostion = new Rechnungspositionen();
+                $rechnungspostion->setIdTable(1);
+                $rechnungspostion->setName("malen");
+                //$rechnungspostion->setMenge(intval($row['Menge']));
+                $rechnungspostion->setMenge(5);
+                $rechnungspostion->setEZPreisNetto(3);
+                $rechnungspostion->setEinheitsPreis(50);
+                $rechnungspostion->setRechnung($rechnung);
+                $entityManager->persist($rechnungspostion);
+            }
+
             $entityManager->flush();
-            return $this->render('Rechnungsgen/index.html.twig');
+            return new JsonResponse($rechnung);
         }
         return $this->render('Rechnungsgen/index.html.twig', [
             'controller_name' => 'RechnungsPositionController',
